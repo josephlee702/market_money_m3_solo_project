@@ -18,11 +18,11 @@
         "lines": [
           1,
           1,
+          1,
+          null,
+          null,
+          1,
           0,
-          null,
-          null,
-          1,
-          1,
           null,
           null
         ]
@@ -75,8 +75,16 @@
         ],
         "branches": {
         }
+      },
+      "/Users/josephlee/3mod/projects/market_money/app/models/vendor.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
       }
     },
-    "timestamp": 1701741605
+    "timestamp": 1701745042
   }
 }

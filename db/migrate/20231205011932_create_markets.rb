@@ -7,6 +7,8 @@ class CreateMarkets < ActiveRecord::Migration[7.1]
       t.string :county
       t.string :state
       t.string :zip
+      t.string :lat
+      t.string :lon
 
       t.timestamps
     end

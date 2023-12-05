@@ -30,6 +30,12 @@ describe "Markets API" do
 
       expect(market).to have_key(:zip)
       expect(market[:zip]).to be_an(String)
+
+      expect(market).to have_key(:lat)
+      expect(market[:lat]).to be_an(String)
+
+      expect(market).to have_key(:lon)
+      expect(market[:lon]).to be_an(String)
     end
   end
 
@@ -59,5 +65,11 @@ describe "Markets API" do
 
     expect(market).to have_key(:zip)
     expect(market[:zip]).to be_an(String)
+
+    expect(market).to have_key(:lat)
+    expect(market[:lat]).to be_an(String)
+
+    expect(market).to have_key(:lon)
+    expect(market[:lon]).to be_an(String)
   end
 end
