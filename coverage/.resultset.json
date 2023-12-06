@@ -1,6 +1,48 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/josephlee/3mod/projects/market_money/app/controllers/api/v0/markets_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/josephlee/3mod/projects/market_money/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/josephlee/3mod/projects/market_money/app/serializers/market_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
       "/Users/josephlee/3mod/projects/market_money/app/models/market.rb": {
         "lines": [
           1,
@@ -16,22 +58,36 @@
           null
         ]
       },
-      "/Users/josephlee/3mod/projects/market_money/app/controllers/api/v0/markets_controller.rb": {
+      "/Users/josephlee/3mod/projects/market_money/app/serializers/error_serializer.rb": {
         "lines": [
           1,
+          null,
           1,
           1,
           null,
           null,
           1,
-          0,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
           null
         ]
       },
-      "/Users/josephlee/3mod/projects/market_money/app/controllers/application_controller.rb": {
+      "/Users/josephlee/3mod/projects/market_money/app/poros/error_message.rb": {
         "lines": [
           1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
           null
         ]
       },
@@ -114,14 +170,19 @@
         "branches": {
         }
       },
-      "/Users/josephlee/3mod/projects/market_money/app/serializers/market_serializer.rb": {
+      "/Users/josephlee/3mod/projects/market_money/app/serializers/vendor_serializer.rb": {
         "lines": [
-
+          0,
+          0,
+          0,
+          null,
+          0,
+          0
         ],
         "branches": {
         }
       }
     },
-    "timestamp": 1701897584
+    "timestamp": 1701905674
   }
 }
