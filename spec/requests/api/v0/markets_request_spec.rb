@@ -4,7 +4,7 @@ describe "Markets API" do
   it "sends a list of markets" do
     create_list(:market, 3)
 
-    get '/api/v1/markets'
+    get '/api/v0/markets'
 
     expect(response).to be_successful
 
@@ -36,13 +36,16 @@ describe "Markets API" do
 
       expect(market).to have_key(:lon)
       expect(market[:lon]).to be_an(String)
+
+      expect(market).to have_key(:vendor_count)
+      expect(market[:vendor_count]).to be_an(Integer)
     end
   end
 
   it "can get one market by its id" do
     id = create(:market).id
   
-    get "/api/v1/markets/#{id}"
+    get "/api/v0/markets/#{id}"
   
     market = JSON.parse(response.body, symbolize_names: true)
   
@@ -71,5 +74,23 @@ describe "Markets API" do
 
     expect(market).to have_key(:lon)
     expect(market[:lon]).to be_an(String)
+
+    expect(market).to have_key(:vendor_count)
+    expect(market[:vendor_count]).to be_an(Integer)
+  end
+
+  it "can get all vendors for a market" do
+    new_market = create(:market)
+    id = new_market.id
+    vendor = create(:vendor)
+    new_market.vendors << vendor
+
+    get "/api/v0/markets/#{id}/vendors"
+
+    market = JSON.parse(response.body, symbolize_names: true)
+    expect(response).to be_successful
+  
+    expect(market).to have_key(:name)
+    expect(market[:name]).to be_an(String)
   end
 end

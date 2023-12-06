@@ -14,6 +14,8 @@ gem "bootsnap", require: false
 
 gem "simplecov", require: false
 
+gem "jsonapi-serializer"
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'factory_bot_rails'
