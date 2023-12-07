@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :markets, only: [:index, :show] do
         resources :vendors, only: [:index], controller: "market_vendors"
       end
+      resources :vendors, only: [:show, :create, :update, :destroy], controller: "vendors"
     end
   end
 end
