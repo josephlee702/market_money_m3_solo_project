@@ -1,8 +1,18 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/josephlee/3mod/projects/market_money/app/models/vendor.rb": {
+      "/Users/josephlee/3mod/projects/market_money/app/models/market.rb": {
         "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           1,
           1,
           1,
@@ -16,7 +26,40 @@
           null
         ]
       },
-      "/Users/josephlee/3mod/projects/market_money/app/controllers/api/v0/vendors_controller.rb": {
+      "/Users/josephlee/3mod/projects/market_money/app/models/vendor.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/josephlee/3mod/projects/market_money/app/serializers/market_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          9,
+          null,
+          null
+        ]
+      },
+      "/Users/josephlee/3mod/projects/market_money/app/serializers/vendor_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/josephlee/3mod/projects/market_money/app/controllers/api/v0/markets_controller.rb": {
         "lines": [
           1,
           1,
@@ -26,15 +69,10 @@
           null,
           null,
           1,
-          1,
-          1,
+          2,
           null,
           null,
           1,
-          null,
-          1,
-          1,
-          null,
           null,
           1,
           1,
@@ -49,7 +87,7 @@
           null
         ]
       },
-      "/Users/josephlee/3mod/projects/market_money/app/serializers/vendor_serializer.rb": {
+      "/Users/josephlee/3mod/projects/market_money/app/models/market_vendor.rb": {
         "lines": [
           1,
           1,
@@ -62,12 +100,12 @@
           1,
           null,
           1,
-          1,
+          2,
           null,
           null,
           1,
           null,
-          1,
+          2,
           null,
           null,
           null,
@@ -84,98 +122,96 @@
           1,
           null,
           1,
-          1,
-          1,
+          2,
+          2,
           null,
           null
         ]
       },
       "/Users/josephlee/3mod/projects/market_money/app/controllers/api/v0/market_vendors_controller.rb": {
         "lines": [
-          0,
+          1,
+          1,
+          null,
+          1,
+          2,
+          2,
+          null,
+          2,
+          null,
+          null,
+          1,
+          null,
+          1,
           0,
           null,
-          0,
-          0,
-          0,
           null,
-          0,
-          0,
           null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
           null,
           null,
           null,
           null
-        ],
-        "branches": {
-        }
+        ]
       },
-      "/Users/josephlee/3mod/projects/market_money/app/controllers/api/v0/markets_controller.rb": {
+      "/Users/josephlee/3mod/projects/market_money/app/controllers/api/v0/vendors_controller.rb": {
         "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
           0,
+          null,
+          null,
+          null,
+          1,
           0,
           null,
           0,
           0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
           0,
           null,
           0,
           0,
-          0,
           null,
           0,
           null,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/Users/josephlee/3mod/projects/market_money/app/models/market.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/Users/josephlee/3mod/projects/market_money/app/models/market_vendor.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/Users/josephlee/3mod/projects/market_money/app/serializers/market_serializer.rb": {
-        "lines": [
-          0,
-          0,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
           0,
           null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1701913826
+    "timestamp": 1701919403
   }
 }

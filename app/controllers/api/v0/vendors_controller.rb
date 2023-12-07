@@ -7,8 +7,33 @@ class Api::V0::VendorsController < ApplicationController
   end
 
   def create
-    vendor = Vendor.create(vendor_params)
-    render json: VendorSerializer.new(vendor), status: :created, location: api_v0_vendor_path(vendor)
+    vendor = Vendor.new(vendor_params)
+
+    if vendor.save
+      render json: VendorSerializer.new(vendor), status: 201, location: api_v0_vendor_path(vendor)
+    else
+      render json: {errors: vendor.errors.full_messages }, status: 400
+    end
+  end
+
+  def update
+    vendor = Vendor.find(params[:id])
+
+    if vendor.update(vendor_params)
+      render json: VendorSerializer.new(vendor), status: 201
+    else
+      render json: { errors: vendor.errors.full_messages }, status: 404
+    end
+  end
+
+  def destroy
+    vendor = Vendor.find(params[:id])
+
+    if vendor.destroy
+      render json: { message: "Vendor deleted successfully" }, status: 204
+    else
+      render json: { errors: vendor.errors.full_messages }
+    end
   end
 
   private
