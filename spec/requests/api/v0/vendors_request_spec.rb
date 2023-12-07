@@ -47,4 +47,30 @@ describe "Vendors API" do
     expect(data[:errors].first).to have_key(:status)
     expect(data[:errors].first).to have_key(:message)
   end
+
+  it "will create a vendor" do
+    vendor_params = {name: "testing", description: "test", contact_name: "Joseph", contact_phone: "123-456-7890", credit_accepted: true}
+  
+    post "/api/v0/vendors", params: { vendor: vendor_params }
+ 
+    expect(response).to be_successful
+    expect(response.status).to eq(201)
+
+    data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(data).not_to have_key(:errors)
+
+    expect(data[:data]).to have_key(:id)
+    expect(data[:data][:id]).to be_a String
+    
+    expect(data[:data]).to have_key(:type)
+    expect(data[:data][:type]).to be_a String
+    expect(data[:data][:type]).to eq("vendor")
+
+    expect(data[:data][:attributes][:name]).to be_a String
+    expect(data[:data][:attributes][:description]).to be_a String
+    expect(data[:data][:attributes][:contact_name]).to be_a String
+    expect(data[:data][:attributes][:contact_phone]).to be_a String
+    expect(data[:data][:attributes][:credit_accepted]).to be_in([true, false])
+  end
 end
