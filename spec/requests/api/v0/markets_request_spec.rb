@@ -110,9 +110,15 @@ describe "Markets API" do
     get "/api/v0/markets/#{id}/vendors"
 
     market = JSON.parse(response.body, symbolize_names: true)
+    market_attributes = market[:data].first[:attributes]
     expect(response).to be_successful
 
     expect(new_market.vendors.count).to be(1)
-    expect(market[:name]).to be_an(String)
+    
+    expect(market_attributes[:name]).to be_an(String)
+    expect(market_attributes[:description]).to be_an(String)
+    expect(market_attributes[:contact_name]).to be_an(String)
+    expect(market_attributes[:contact_phone]).to be_an(String)
+    expect(market_attributes[:credit_accepted]).to be_in([true,false])
   end
 end
