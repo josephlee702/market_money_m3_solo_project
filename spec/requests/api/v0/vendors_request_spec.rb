@@ -48,7 +48,7 @@ describe "Vendors API" do
     expect(data[:errors].first).to have_key(:message)
   end
 
-  it "will create a vendor" do
+  it "is the happy path for creating a vendor" do
     vendor_params = {name: "testing", description: "test", contact_name: "Joseph", contact_phone: "123-456-7890", credit_accepted: true}
   
     post "/api/v0/vendors", params: { vendor: vendor_params }
@@ -72,5 +72,98 @@ describe "Vendors API" do
     expect(data[:data][:attributes][:contact_name]).to be_a String
     expect(data[:data][:attributes][:contact_phone]).to be_a String
     expect(data[:data][:attributes][:credit_accepted]).to be_in([true, false])
+  end
+
+  it "is the sad path for creating a vendor" do
+    vendor_params = {name: "testing", description: "test", contact_name: "", contact_phone: "", credit_accepted: true}
+  
+    post "/api/v0/vendors", params: { vendor: vendor_params }
+ 
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+    data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(data).to have_key(:errors)
+    expect(data[:errors].count).to eq(2)
+    expect(data[:errors].first).to eq("Contact name can't be blank")
+    expect(data[:errors].second).to eq("Contact phone can't be blank")
+  end
+
+  #happy path for update
+  it "will update a vendor successfully" do
+    vendor = create(:vendor)
+    vendor_params = {name: "testing", description: "test", contact_name: "Joseph", contact_phone: "123-456-7890", credit_accepted: true}
+  
+    patch "/api/v0/vendors/#{vendor.id}", params: { vendor: vendor_params }
+ 
+    expect(response).to be_successful
+    expect(response.status).to eq(201)
+
+    data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(data).not_to have_key(:errors)
+
+    expect(data[:data][:type]).to eq("vendor")
+    expect(data[:data][:attributes][:name]).to eq("testing")
+    expect(data[:data][:attributes][:description]).to eq("test")
+    expect(data[:data][:attributes][:contact_name]).to eq("Joseph")
+    expect(data[:data][:attributes][:contact_phone]).to eq("123-456-7890")
+    expect(data[:data][:attributes][:credit_accepted]).to be(true)
+  end
+
+  it "will not update if Vendor id is not found" do
+    vendor = create(:vendor)
+    vendor_params = {name: "testing", description: "test", contact_name: "Joseph", contact_phone: "123-456-7890", credit_accepted: true}
+  
+    patch "/api/v0/vendors/123211", params: { vendor: vendor_params }
+ 
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+    data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(data).to have_key(:errors)
+    expect(data[:errors].count).to eq(1)
+    expect(data[:errors].first[:message]).to eq("Couldn't find Vendor with 'id'=123211")
+    expect(data[:errors].first[:status]).to eq("404")
+  end
+
+  it "will not update if contact name is blank" do
+    vendor = create(:vendor)
+    vendor_params = {name: "testing", description: "test", contact_name: "", contact_phone: "123-456-7890", credit_accepted: true}
+  
+    patch "/api/v0/vendors/#{vendor.id}", params: { vendor: vendor_params }
+ 
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+    data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(data).to have_key(:errors)
+    expect(data[:errors].count).to eq(1)
+    expect(data[:errors]).to eq(["Contact name can't be blank"])
+  end
+
+  it "will delete a vendor" do
+    vendor = create(:vendor)
+    delete "/api/v0/vendors/#{vendor.id}"
+
+    expect(response).to be_successful
+    expect(response.status).to eq(204)
+    expect(response.body).to eq("")
+    expect(Vendor.find_by(id: vendor.id)).to be_nil
+  end
+
+  it "will not delete if Vendor id is not found" do
+    vendor = create(:vendor)
+  
+    delete "/api/v0/vendors/123211"
+ 
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+    data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(data).to have_key(:errors)
+    expect(data[:errors].count).to eq(1)
+    expect(data[:errors].first[:message]).to eq("Couldn't find Vendor with 'id'=123211")
+    expect(data[:errors].first[:status]).to eq("404")
   end
 end
