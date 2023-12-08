@@ -10,7 +10,11 @@ class Api::V0::MarketsController < ApplicationController
   end
 
   def search
-    render json: MarketSerializer.new(Market.find_market_by_state(params)), status: 200
+    if params[:state] && !params[:city] && !params[:name]
+      render json: MarketSerializer.new(Market.find_market_by_state(params)), status: 200
+    elsif params[:state] && params[:city] && !params[:name]
+      render json: MarketSerializer.new(Market.find_market_by_state_and_city(params)), status: 200
+    end
   end
 
   private
