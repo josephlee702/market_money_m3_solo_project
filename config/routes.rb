@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v0 do
+      get "markets/search", to: "markets#search"
       post "/market_vendors", to: "market_vendors#create"
       delete "/market_vendors", to: "market_vendors#destroy"
       resources :markets, only: [:index, :show] do
