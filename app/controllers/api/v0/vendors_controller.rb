@@ -12,7 +12,7 @@ class Api::V0::VendorsController < ApplicationController
     if vendor.save
       render json: VendorSerializer.new(vendor), status: 201, location: api_v0_vendor_path(vendor)
     else
-      render json: {errors: vendor.errors.full_messages }, status: 400
+      render json: { errors: vendor.errors.full_messages }, status: 400
     end
   end
 
